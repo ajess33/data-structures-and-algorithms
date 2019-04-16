@@ -24,6 +24,7 @@ console.log(a) prints [1, 2, 3, 1]
 const appendFirstToLast = (arr) => {
   // Solution code here...
  
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -54,7 +55,7 @@ console.log(people[1].isAuthor) prints true
 
 const setStatusAsAuthor = (people) => {
   // Solution code here...
-
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -68,9 +69,7 @@ append(a, b);
 console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
-const append = (arr1, arr2) => {
-  // Solution code here...
-};
+const append = (arr1, arr2) => arr1.push(...arr2);
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
