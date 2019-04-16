@@ -50,9 +50,9 @@ setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
-const setStatusAsAuthor = (people) => {
-  // Solution code here...
-};
+const setStatusAsAuthor = (people) =>
+  people.forEach((person) => (person.isAuthor = true));
+// Solution code here...
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
