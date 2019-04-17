@@ -5,9 +5,7 @@ CHALLENGE 1
 Write a function named sortBackwards that takes in an array of numbers and returns the same array, with the numbers sorted, highest to smallest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBackwards = (arr) => {
-  // Solution code here...
-};
+const sortBackwards = (arr) => arr.sort((a, b) => b - a);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -16,18 +14,15 @@ In this alphabetization, capital letters come before lower case letters.
 For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
-const alphabetize = (arr) => {
-  // Solution code here...
-};
+const alphabetize = (arr) =>
+  arr.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortByLength = (arr) => {
-  // Solution code here...
-};
+const sortByLength = (arr) => arr.sort((a, b) => a.length - b.length);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -37,6 +32,10 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  arr.sort((a, b) => {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,9 +49,7 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
-const sortByPrice = (arr) => {
-  // Solution code here...
-};
+const sortByPrice = (arr) => arr.sort((a, b) => a.price - b.price);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -60,9 +57,8 @@ Write a function named sortNumbersByLength that takes in an array of numbers and
 For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
-const sortNumbersByLength = (arr) => {
-  // Solution code here...
-};
+const sortNumbersByLength = (arr) =>
+  arr.sort((a, b) => a.toString().length - b.toString().length);
 
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -81,9 +77,10 @@ const people = [
   new Person('Stan', 'Seattle', 67)
 ];
 
-const sortPeople = (arr) => {
-  // Solution code here...
-};
+const sortPeople = (arr) =>
+  arr.sort((a, b) =>
+    a.lastName.toLowerCase().localeCompare(b.lastName.toLowerCase())
+  );
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
@@ -92,9 +89,15 @@ If two people share the same last name, alphabetize on their first name.
 If two people have the same full name, the younger one should come first. Do not worry about capitalization.
 ------------------------------------------------------------------------------------------------ */
 
-const sortPeopleBetter = (arr) => {
-  // Solution code here...
-};
+const sortPeopleBetter = (arr) =>
+  arr.sort((a, b) =>
+    a.lastName !== b.lastName
+      ? a.lastName.toLowerCase().localeCompare(b.lastName.toLowerCase())
+      : `${a.firstName.toLowerCase()} ${a.lastName.toLowerCase()}` !==
+        `${b.firstName.toLowerCase()} ${b.lastName.toLowerCase()}`
+        ? a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase())
+        : a.age - b.age
+  );
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -116,9 +119,14 @@ const meetings = [
   new Meeting('Friday', '1200', '1345')
 ];
 
-const sortMeetingsByDay = (arr) => {
-  // Solution code here...
-};
+const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+const sortMeetingsByDay = (arr) =>
+  arr.sort(
+    (a, b) =>
+      days.indexOf(a.dayOfWeek.toLowerCase()) -
+      days.indexOf(b.dayOfWeek.toLowerCase())
+  );
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -127,9 +135,18 @@ Sort the meetings in the order that they start. If two meetings start at the sam
 You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
-const sortSchedule = (arr) => {
-  // Solution code here...
-};
+const sortSchedule = (arr) =>
+  arr.sort((a, b) =>
+    a.dayOfWeek !== b.dayOfWeek
+      ? days.indexOf(a.dayOfWeek.toLowerCase()) -
+        days.indexOf(b.dayOfWeek.toLowerCase())
+      : parseInt(a.start) !== parseInt(b.start)
+        ? parseInt(a.start) - parseInt(b.start)
+        : parseInt(a.end) -
+        parseInt(a.start) -
+        parseInt(b.end) -
+        parseInt(b.start)
+  );
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
