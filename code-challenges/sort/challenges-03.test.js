@@ -95,8 +95,8 @@ const sortPeopleBetter = (arr) =>
       ? a.lastName.toLowerCase().localeCompare(b.lastName.toLowerCase())
       : `${a.firstName.toLowerCase()} ${a.lastName.toLowerCase()}` !==
         `${b.firstName.toLowerCase()} ${b.lastName.toLowerCase()}`
-        ? a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase())
-        : a.age - b.age
+      ? a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase())
+      : a.age - b.age
   );
 
 /* ------------------------------------------------------------------------------------------------
@@ -141,8 +141,8 @@ const sortSchedule = (arr) =>
       ? days.indexOf(a.dayOfWeek.toLowerCase()) -
         days.indexOf(b.dayOfWeek.toLowerCase())
       : parseInt(a.start) !== parseInt(b.start)
-        ? parseInt(a.start) - parseInt(b.start)
-        : parseInt(a.end) -
+      ? parseInt(a.start) - parseInt(b.start)
+      : parseInt(a.end) -
         parseInt(a.start) -
         parseInt(b.end) -
         parseInt(b.start)
@@ -247,7 +247,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xescribe('Testing challenge 7', () => {
+xdescribe('Testing challenge 7', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
