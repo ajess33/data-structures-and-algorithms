@@ -21,6 +21,7 @@ const courseInfo = {
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,6 +77,7 @@ let characters = [
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  return arr.length;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -86,6 +88,7 @@ Write a function named getHouses that returns a new array containing the names o
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.forEach((house) => houses.push(house.house));
   return houses;
 };
 
@@ -100,6 +103,15 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if (character === arr[i].name) {
+      if (arr[i].children.length === 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -110,6 +122,15 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if (character === arr[i].name) {
+      if (arr[i].children.length === 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
