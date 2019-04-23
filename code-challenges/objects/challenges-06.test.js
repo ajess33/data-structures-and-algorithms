@@ -142,12 +142,8 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 
 const houseSize = (arr) => {
   const sizes = [];
-  // solution code here
-  // loop through array
+
   for (let i = 0; i < arr.length; i++) {
-    // make sure character hasn't already been counted
-    // if (!Object.values(sizes[i].house)) {
-    // add up that character plus any however many children they have
     let count = arr[i].children.length + 1;
     if (arr[i].spouse !== null) {
       count++;
@@ -158,11 +154,7 @@ const houseSize = (arr) => {
       members: count
     };
     sizes.push(houseObj);
-    // }
   }
-
-  // return that number and the house name in an object
-  console.log(sizes);
   return sizes;
 };
 
@@ -181,6 +173,18 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    let count = arr[i].children.length + 1;
+    if (arr[i].spouse !== null && !deceasedSpouses.includes(arr[i].spouse)) {
+      count++;
+    }
+    let houseName = arr[i].house;
+    const houseObj = {
+      house: houseName,
+      members: count
+    };
+    survivors.push(houseObj);
+  }
   return survivors;
 };
 
