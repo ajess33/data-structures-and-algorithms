@@ -87,6 +87,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (arr) => {
   // Solution code here...
+  const realArr = arr.split('');
+  const result = realArr.reduce((acc, cur) => {
+    acc.unshift(cur);
+    return acc;
+  }, []);
+  return result.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
