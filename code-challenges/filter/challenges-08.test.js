@@ -8,6 +8,12 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
+  const result = arr.filter(val => {
+    if (val % 2 !== 0) {
+      return val;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -18,8 +24,16 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 ------------------------------------------------------------------------------------------------ */
 
 
+
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
+  const pattern = /[aeiou]/gi;
+  const result = arr.filter(word => {
+    if (word.search(pattern) !== -1) {
+      return word;
+    }
+  });
+  return result;
 };
 
 
@@ -31,6 +45,10 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  const result = arr.filter(val => {
+    return !forbiddenValues.includes(val);
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,8 +88,21 @@ const snorlaxData = {
   weight: 4600,
 };
 
+// const getBaseStatGreaterThan = (arr, minBaseStat) => {
+//   // Solution code here...
+//   const results = arr.filter(stat => {
+//     if (stat.baseStat > minBaseStat) {
+//       console.log(stat.stat.name);
+//       return stat.stat.name;
+//     }
+//   });
+//   return results;
+// };
+
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  const results = arr.filter(stat => stat.baseStat > minBaseStat);
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,8 +111,12 @@ Write a function named getStatName that is an extension of your getBaseStatGreat
 For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 'special-attack'].
 ------------------------------------------------------------------------------------------------ */
 
+
+
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  return getBaseStatGreaterThan(arr, minBaseStat).map(stat => {
+    return stat.stat.name;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,6 +169,12 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
+  const result = arr.filter(char => {
+    if (!char.children) {
+      return char;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
