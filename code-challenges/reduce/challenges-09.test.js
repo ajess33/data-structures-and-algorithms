@@ -159,6 +159,14 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  const result = arr.reduce((acc, cur, idx) => {
+    acc += cur;
+    if (idx === arr.length - 1) {
+      return acc / arr.length;
+    }
+    return acc;
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
