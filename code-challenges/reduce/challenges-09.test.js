@@ -145,6 +145,10 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  const result = arr.filter((el) => el.children).reduce((acc, cur) => {
+    return acc += cur.children.length;
+  }, 0);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
