@@ -232,8 +232,17 @@ const snorlaxData = {
   weight: 4600,
 };
 
+// return the object whose name matches statName
+
 const extractStat = (statName, arr) => {
   // Solution code here...
+  const result = arr.reduce((acc, cur) => {
+    if (statName === cur.stat.name) {
+      acc = cur;
+    }
+    return acc;
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
