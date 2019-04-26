@@ -159,6 +159,14 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  const result = arr.reduce((acc, cur, idx) => {
+    acc += cur;
+    if (idx === arr.length - 1) {
+      return acc / arr.length;
+    }
+    return acc;
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,6 +186,13 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  const result = arr.reduce((acc, cur) => {
+    if (isPrime(cur)) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -217,8 +232,17 @@ const snorlaxData = {
   weight: 4600,
 };
 
+// return the object whose name matches statName
+
 const extractStat = (statName, arr) => {
   // Solution code here...
+  const result = arr.reduce((acc, cur) => {
+    if (statName === cur.stat.name) {
+      acc = cur;
+    }
+    return acc;
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
