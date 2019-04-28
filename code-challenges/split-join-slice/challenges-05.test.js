@@ -68,8 +68,12 @@ const gruffaloCrumble = {
 };
 
 const listFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
+  // const pattern = / .*?( )/;
+  const regex = /(.+?\s+.+?\s+)/;
+  const result = recipe.ingredients.map(ing => {
+    const string = ing.replace(regex, ' ');
+    return string.trimLeft();
+  });
   return result;
 };
 
@@ -80,8 +84,17 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let result = [];
   // Solution code here...
+  const result = recipe.ingredients.map(ing => {
+    const arr = ing.split(' ');
+    if (arr.length === 3) {
+      return arr[arr.length - 1];
+    } else if (arr.length === 4) {
+      return `${arr[arr.length - 2]} ${arr[arr.length - 1]}`;
+    } else if (arr.length === 5) {
+      return `${arr[arr.length - 3]} ${arr[arr.length - 2]} ${arr[arr.length - 1]}`;
+    }
+  });
   return result;
 };
 
@@ -93,8 +106,12 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 const stepActions = (recipe) => {
-  let result = [];
   // Solution code here...
+  const arr = recipe.steps;
+  const result = arr.map(step => {
+    const splitStep = step.split(' ');
+    return splitStep[0];
+  });
   return result;
 };
 
@@ -110,6 +127,15 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  arr = arr.filter((num, idx) => {
+    if (idx % 2 !== 0) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  console.log(arr);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,6 +151,14 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if (numberOfCharacters < 0) {
+    return str;
+  }
+
+  const arr = str.split('');
+  arr.splice(-numberOfCharacters);
+  const result = arr.join('');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,6 +169,13 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  const arr = str.split(',');
+  arr.forEach(num => {
+    if (!isNaN(num)) {
+      total += Number(num);
+    }
+
+  });
   return total;
 };
 
@@ -146,6 +187,9 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
+  const pattern = /[aeiou]/ig;
+  const result = str.replace(pattern, '');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -166,7 +210,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-05.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual([
       'Welcome',
@@ -184,7 +228,7 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual([
       'G',
@@ -207,7 +251,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual([
       'Gruffalo',
@@ -226,7 +270,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual([
       'Gruffalo',
@@ -244,7 +288,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual([
       'Pre-heat',
@@ -261,7 +305,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
@@ -274,7 +318,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should shorten the string based on the first argument', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
@@ -290,14 +334,13 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should add up the numbers contained within the string', () => {
     expect(totalSumCSV('1,4,5,7,2')).toStrictEqual(19);
     expect(totalSumCSV('147')).toStrictEqual(147);
   });
 });
-
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
@@ -306,7 +349,7 @@ xdescribe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return the string without vowels', () => {
     expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
     expect(extractVowels('gregor').length).toStrictEqual(2);
