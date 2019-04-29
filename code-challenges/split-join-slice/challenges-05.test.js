@@ -127,15 +127,12 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
-  arr = arr.filter((num, idx) => {
-    if (idx % 2 !== 0) {
-      return false;
-    } else {
-      return true;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+      i--;
     }
-  });
-  console.log(arr);
-  return arr;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
