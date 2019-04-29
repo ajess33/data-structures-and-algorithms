@@ -63,7 +63,13 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
+
+  const newPattern = /((^\((\d{3})\))|(^\d{3}))\D?(\d{3})\D?(\d{4})$/;
+  return newPattern.test(phoneNumber);
 };
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 - Stretch Goal
@@ -154,6 +160,8 @@ describe('Testing challenge 3', () => {
     expect(validatePhoneNumber('55_55_5555')).toBeFalsy();
   });
 });
+
+
 
 describe('Testing challenge 4', () => {
   test('It should return the closing tags', () => {
