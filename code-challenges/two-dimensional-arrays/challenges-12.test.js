@@ -102,6 +102,13 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] === board[row][col]) {
+        return board[i][j] === '#' ? 'hit' : 'miss';
+      }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
