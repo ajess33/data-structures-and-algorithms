@@ -16,11 +16,28 @@ const seattleCenter = [7, 14, 19, 22, 15, 4, 23, 27, 28, 23, 1, 29];
 const capHill = [5, 85, 58, 51, 50, 13, 33, 32, 47, 94, 31, 62];
 const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
+// [
+//       { sales: '88 cookies', time: '9 a.m.' },
+//       { sales: '153 cookies', time: '10 a.m.' },
+//       { sales: '252 cookies', time: '11 a.m.' },
+//       { sales: '286 cookies', time: '12 p.m.' },
+//       { sales: '139 cookies', time: '1 p.m.' },
+//       { sales: '161 cookies', time: '2 p.m.' },
+//     ]
+
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
-
+  const result = [];
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let totalForHour = 0;
+    for (let j = 0; j < stores.length; j++) {
+      totalForHour += stores[j][i];
+    }
+    result.push(totalForHour);
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,9 +47,41 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
+
+// const salesData = (hours, data) => {
+//   // Solution code here...
+//   const result = [];
+//   for (let i = 0; i < hours.length; i++) {
+//     let time = hours[i];
+//     for (let j = 0; j < data.length; j++) {
+//       console.log(data[j][i]);
+
+//     }
+//     const hourlyObject = {
+//       sales: `${totalForHour} cookies`,
+//       time: `${time}.`
+//     };
+//     result.push(hourlyObject);
+//   }
+//   return result;
+// };
+
+//       { sales: '161 cookies', time: '2 p.m.' },
+
 const salesData = (hours, data) => {
   // Solution code here...
+  const result = [];
+  data.forEach((hourlyTotal, index) => {
+    const hourlyObject = {
+      sales: `${hourlyTotal} cookies`,
+      time: `${hours[index]}`
+    };
+    result.push(hourlyObject);
+  });
+  return result;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
