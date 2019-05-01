@@ -99,6 +99,12 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+  const result = arr.filter(str => {
+    if (str.includes(target)) {
+      return true;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
