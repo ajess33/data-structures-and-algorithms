@@ -133,8 +133,16 @@ Return a two-dimensional array with the same roster, but where anyone whose name
 For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again', 'still Brook']] returns [['Actual Person'], ['Human Person']]
 ------------------------------------------------------------------------------------------------ */
 
+// const roster = [
+//   ['Michelle', 'Allie', 'Brook TESTING'],
+//   ['Brook Riggio', 'hey look it\'s Brook', 'Jennifer'],
+//   ['Nicholas', 'Sam', 'Scott', 'Vinicio']
+// ];
+
+
 const unenrollBrook = (arr) => {
   // Solution code here...
+  return arr.map(classList => classList.filter(name => !name.includes('Brook')));
 };
 
 /* ------------------------------------------------------------------------------------------------
