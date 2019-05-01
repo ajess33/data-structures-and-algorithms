@@ -118,17 +118,16 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  const flattenedArr = numbers.reduce((acc, cur) => {
+    return acc.concat(cur);
+  }, []);
   let total = 1;
-  for (let i = 0; i < numbers.length; i++) {
-    let subtotal = 0;
-    for (let j = 0; j < numbers[i].length; j++) {
-      subtotal += numbers[i][j] * numbers[i][j + 1];
-    }
-    total += subtotal;
-  }
+  flattenedArr.forEach((num) => {
+    total = total * num;
+  });
   return total;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -200,6 +199,7 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   // Solution code here...
+  const arr = str.split(',');
 };
 
 /* ------------------------------------------------------------------------------------------------
