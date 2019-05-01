@@ -119,6 +119,15 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  let total = 1;
+  for (let i = 0; i < numbers.length; i++) {
+    let subtotal = 0;
+    for (let j = 0; j < numbers[i].length; j++) {
+      subtotal += numbers[i][j] * numbers[i][j + 1];
+    }
+    total += subtotal;
+  }
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -137,6 +146,24 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+  let averages = [];
+  for (let i = 0; i < weather.length; i++) {
+    let setTotal = 0;
+    for (let j = 0; j < weather[i].length; j++) {
+      setTotal += weather[i][j];
+    }
+    averages.push(setTotal / weather[i].length);
+  }
+
+  console.log(averages);
+
+  let total = 0;
+  for (var i = 0; i < averages.length; i++) {
+
+    total += averages[i];
+  }
+
+  return total / averages.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
