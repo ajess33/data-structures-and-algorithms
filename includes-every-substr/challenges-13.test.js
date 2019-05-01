@@ -79,9 +79,16 @@ CHALLENGE 5
 
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
+// ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe']
 
 const allHappy = (arr) => {
   // Solution code here...
+  function isHappy(str) {
+    const pattern = /[:)]/g;
+    return pattern.test(str);
+  }
+
+  return arr.every(isHappy);
 };
 
 /* ------------------------------------------------------------------------------------------------
