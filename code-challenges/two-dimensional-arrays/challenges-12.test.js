@@ -155,11 +155,8 @@ const averageDailyTemperature = (weather) => {
     averages.push(setTotal / weather[i].length);
   }
 
-  console.log(averages);
-
   let total = 0;
   for (var i = 0; i < averages.length; i++) {
-
     total += averages[i];
   }
 
@@ -182,6 +179,15 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
+  let averages = [];
+  for (let i = 0; i < weather.length; i++) {
+    let setTotal = 0;
+    for (let j = 0; j < weather[i].length; j++) {
+      setTotal += weather[i][j];
+    }
+    averages.push(setTotal / weather[i].length);
+  }
+  return Math.min(...averages);
 };
 
 /* ------------------------------------------------------------------------------------------------
