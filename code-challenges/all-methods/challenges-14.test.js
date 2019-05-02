@@ -89,6 +89,24 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  let lukeMass = 0;
+  let result = '';
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].name === 'Luke Skywalker') {
+      lukeMass = arr[i].mass;
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (parseInt(arr[i].mass) > parseInt((lukeMass))) {
+      console.log('pass');
+      console.log(arr[i].name);
+      result = result.concat(arr[i].name, ' - ');
+    }
+  }
+  result = result.split('');
+  result.splice(result.length - 3);
+  result = result.join('');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
