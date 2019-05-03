@@ -170,10 +170,22 @@ Here is a sample board:
   ['X', 'O', ''],
   ['X', 'O', 'X'],
 ];
+[
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+];
 ------------------------------------------------------------------------------------------------ */
+// [['X', '', 'O'], ['X', 'O', ''], ['X', 'O', 'X']]
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+  board = board.join('-').replace(/,/g,'');
+  // console.log(board)
+  if(/XXX|X...X...X|X....X....X|X..X..X/.test(board)) return true;
+  if(/OOO|O...O...O|O....O....O|O..O..O/.test(board)) return true;
+  if(/0/.test(board)) return false;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
