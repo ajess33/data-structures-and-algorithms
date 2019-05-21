@@ -14,14 +14,28 @@ const reverseArray = (array) => {
   }
 };
 
+const newReverseArray = (array) => {
+  if (!Array.isArray(array)) {
+    return 'Not an array';
+  } else if (array.length === 0) {
+    return [];
+  } else {
+    let result = [];
+    array.forEach((el) => {
+      result.unshift(el);
+    });
+    return result;
+  }
+};
+
 describe('empty array should return an empty array', () => {
   it('array is empty', () => {
-    expect(reverseArray([])).toHaveLength(0);
+    expect(newReverseArray([])).toHaveLength(0);
   });
 });
 
 describe('input value should be an array', () => {
   it('input value is not an array', () => {
-    expect(reverseArray({})).toEqual('Not an array');
+    expect(newReverseArray({})).toEqual('Not an array');
   });
 });
