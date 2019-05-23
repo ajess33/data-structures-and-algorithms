@@ -25,5 +25,5 @@ const testArray = [1, 3, 5, 7, 9, 11];
 
 describe('The binary search function', () => {
   it('should return an index if it finds a match', () => {});
-  expect(binarySearch([testArray], 3)).toBe(2);
+  expect(binarySearch([testArray], 3)).toBe(1);
 });
