@@ -39,7 +39,6 @@ describe('The binary search function', () => {
   });
 
   it('should return a message if array is of length 1', () => {
-    console.log(binarySearch([1], 1));
     expect(binarySearch([1], 1)).toBe(
       `Cannot do a binary search on one element`
     );
@@ -51,5 +50,3 @@ describe('The binary search function', () => {
     );
   });
 });
-
-// WRITE MORE TESTS
