@@ -1,22 +1,40 @@
-// Define a PRINT method that returns a collection of all the nodes
-
 class LinkedList {
   constructor() {
     this.head = null;
   }
 
+  insertMany(arr) {
+    if (!arr) {
+      return `You must input an array consisting of at least one value`;
+    }
+    arr.forEach((value) => {
+      const newNode = new Node(value);
+      if (!this.head) {
+        this.head = newNode;
+      } else {
+        newNode.next = this.head;
+        this.head = newNode;
+      }
+    });
+  }
+
   insert(value) {
+    if (!value) {
+      return `You must input a value`;
+    }
     const newNode = new Node(value);
-    if (this.head === null) {
+    if (!this.head) {
       this.head = newNode;
     } else {
       newNode.next = this.head;
       this.head = newNode;
     }
-    console.log('Added Node!');
   }
 
   includes(searchQuery) {
+    if (!searchQuery) {
+      return `You must input a search query`;
+    }
     let current = this.head;
 
     while (current) {
@@ -29,9 +47,19 @@ class LinkedList {
     }
   }
 
-  // print() {
-
-  // }
+  print() {
+    if (!this.head) {
+      return `You have to insert a node first!`;
+    } else {
+      let current = this.head;
+      let stringNodes = '';
+      while (current) {
+        stringNodes += current.value + ' ';
+        current = current.next;
+      }
+      return stringNodes;
+    }
+  }
 }
 
 class Node {
@@ -51,29 +79,50 @@ class Node {
 // Can properly return a collection of all the values that exist in the linked list
 
 describe('The linked list', () => {
+  const list = new LinkedList();
+  list.insert('first value');
+  list.insert('second value');
+
   it('instantiates an empty array to begin', () => {
     const myLinkedList = new LinkedList();
     expect(myLinkedList).toBeDefined();
   });
 
-  it('should have the ability to add new nodes to the head', () => {
+  it('should have the ability to add new nodes to the head on an empty list', () => {
     const newList = new LinkedList();
     newList.insert('this is my value');
-    console.log(newList);
     expect(newList.head.value).toBe(`this is my value`);
   });
 
-  it('should add new nodes to head if head is not node', () => {
+  it('should add new nodes to head on a populated list', () => {
     const list1 = new LinkedList();
     list1.insert('first value!');
     list1.insert('second value!');
     expect(list1.head.value).toBe('second value!');
   });
 
-  it('should return a value if you run the includes method', () => {
-    const list = new LinkedList();
-    list.insert('first value');
-    list.insert('second value');
-    expect(list.includes('second value')).toBe(true);
+  it('should be able to insert multiple nodes at once', () => {
+    const list1 = new LinkedList();
+    list1.insertMany(['hello', 'im inserting', 'multiple nodes']);
+    console.log(list1);
+    expect(list1.head.value).toBe('multiple nodes');
+  });
+
+  it('should return true if you run the includes method and it finds a match', () => {
+    expect(list.includes('second value')).toBeTruthy();
+  });
+
+  it('should return false if a match isnt found.', () => {
+    expect(list.includes('I am not in the list')).toBeFalsy();
+  });
+
+  it('should log a collection of all node values as a string', () => {
+    console.log(list.print());
+    expect(list.print()).toBe('second value first value ');
+  });
+
+  it('should log a message if you dont have any nodes in your list', () => {
+    const list1 = new LinkedList();
+    expect(list1.print()).toBe('You have to insert a node first!');
   });
 });
