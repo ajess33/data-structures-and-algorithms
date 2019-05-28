@@ -31,6 +31,43 @@ class LinkedList {
     }
   }
 
+  // add node to END of list
+  append(value) {
+    let current;
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      current = this.head;
+      // loop through
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+  }
+
+  // add node immediately BEFORE the selected node index
+  insertBefore(value, location) {
+    // loop through
+    // if next.val = passed val
+    // new node -> next = current.next
+    // current.next = new Node
+  }
+
+  // add node immediately AFTER the selected node index
+  insertAfter(value, location) {
+    // loop through
+    // if current.val = passed val
+    // new Node -> next equals current.next
+    // current.next -> new Node
+  }
+
+  delete(value) {
+    // if next.val = passed val
+    // next = next.next
+  }
+
   includes(searchQuery) {
     if (!searchQuery) {
       return `You must input a search query`;
@@ -79,13 +116,24 @@ TESTS
 6. Can successfully insert a node after the last node of the linked list
 */
 
+const listTest = new LinkedList();
+listTest.insert('first value');
+
 describe('The linked list', () => {
   const list = new LinkedList();
   list.insert('first value');
   list.insert('second value');
+  list.insert('third value');
 
   it('instantiates an empty array to begin', () => {
     const myLinkedList = new LinkedList();
     expect(myLinkedList).toBeDefined();
+  });
+
+  // FINISH THIS
+  it('should insert a node at the end of the linked list', () => {
+    listTest.append('last value in list');
+    console.log(listTest);
+    expect();
   });
 });

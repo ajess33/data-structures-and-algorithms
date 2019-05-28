@@ -78,7 +78,7 @@ class Node {
 // Will return false when searching for a value in the linked list that does not exist
 // Can properly return a collection of all the values that exist in the linked list
 
-describe('The linked list', () => {
+xdescribe('The linked list', () => {
   const list = new LinkedList();
   list.insert('first value');
   list.insert('second value');
@@ -104,7 +104,6 @@ describe('The linked list', () => {
   it('should be able to insert multiple nodes at once', () => {
     const list1 = new LinkedList();
     list1.insertMany(['hello', 'im inserting', 'multiple nodes']);
-    console.log(list1);
     expect(list1.head.value).toBe('multiple nodes');
   });
 
@@ -117,7 +116,6 @@ describe('The linked list', () => {
   });
 
   it('should log a collection of all node values as a string', () => {
-    console.log(list.print());
     expect(list.print()).toBe('second value first value ');
   });
 
