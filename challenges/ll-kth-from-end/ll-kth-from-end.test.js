@@ -216,7 +216,6 @@ describe('The Linked List', () => {
   });
 
   it('should return the value from the middle of a list', () => {
-    console.log(list);
     expect(list.findFromMiddle()).toBe('second');
   });
 });
