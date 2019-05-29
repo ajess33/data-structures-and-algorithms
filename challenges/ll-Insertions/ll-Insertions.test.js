@@ -166,7 +166,7 @@ const listTest = new LinkedList();
 listTest.insert('first value');
 listTest.insert('second value');
 
-describe('The linked list', () => {
+xdescribe('The linked list', () => {
   const list = new LinkedList();
   list.insert('first value');
   list.insert('second value');

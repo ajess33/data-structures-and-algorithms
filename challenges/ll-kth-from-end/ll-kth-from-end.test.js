@@ -1,6 +1,30 @@
 class LinkedList {
   constructor() {
     this.head = null;
+    this.length = 0;
+  }
+
+  findFromEnd(k) {
+    if (this.length > k && this.length > 0 && k > -1) {
+      let current = this.head;
+      for (let i = 0; i < this.length - k - 1; i++) {
+        current = current.next;
+      }
+      return current.value;
+    }
+    return `K was not found`;
+  }
+
+  findFromMiddle() {
+    if (this.length !== 0) {
+      let current = this.head;
+      const middle = Math.ceil((this.length - 1) / 2);
+      for (let i = 0; i < middle; i++) {
+        current = current.next;
+      }
+      return current.value;
+    }
+    return `Invalid List`;
   }
 
   insertMany(arr) {
@@ -9,6 +33,7 @@ class LinkedList {
     }
     arr.forEach((value) => {
       const newNode = new Node(value);
+      this.length++;
       if (!this.head) {
         this.head = newNode;
       } else {
@@ -23,6 +48,7 @@ class LinkedList {
       return `You must input a value`;
     }
     const newNode = new Node(value);
+    this.length++;
     if (!this.head) {
       this.head = newNode;
     } else {
@@ -35,6 +61,8 @@ class LinkedList {
   append(value) {
     let current;
     const newNode = new Node(value);
+    this.length++;
+
     if (!this.head) {
       this.head = newNode;
     } else {
@@ -51,6 +79,7 @@ class LinkedList {
   insertBefore(searchValue, valueToAdd) {
     let current;
     const newNode = new Node(valueToAdd);
+    this.length++;
 
     // loop through
     if (!this.head) {
@@ -77,6 +106,7 @@ class LinkedList {
     // current.next -> new Node
     let current;
     const newNode = new Node(valueToAdd);
+    this.length++;
 
     // loop through
     if (!this.head) {
@@ -105,6 +135,7 @@ class LinkedList {
         if (current.value === value) {
           previous.next = current.next;
           current = current.next;
+          this.length--;
           break;
         } else {
           previous = current;
@@ -151,3 +182,41 @@ class Node {
     this.next = null;
   }
 }
+
+const list = new LinkedList();
+list.insert('first');
+list.insert('second');
+list.insert('third');
+describe('The Linked List', () => {
+  it('should have a length property', () => {
+    expect(list.length).toBe(3);
+  });
+
+  it('should return the value of the kth index from the end of the list', () => {
+    console.log(list);
+    expect(list.findFromEnd(2)).toBe('third');
+  });
+
+  it('should return an error if k was not found', () => {
+    expect(list.findFromEnd(10)).toBe('K was not found');
+  });
+
+  it('should return an error if k is a negative number', () => {
+    expect(list.findFromEnd(-3)).toBe('K was not found');
+  });
+
+  it('should return the value of the kth index in a list of one node', () => {
+    const list1 = new LinkedList();
+    list1.insert('first');
+    expect(list1.findFromEnd(0)).toBe('first');
+  });
+
+  it('should return the value of the kth index if that index is near the middle', () => {
+    expect(list.findFromEnd(1)).toBe('second');
+  });
+
+  it('should return the value from the middle of a list', () => {
+    console.log(list);
+    expect(list.findFromMiddle()).toBe('second');
+  });
+});
