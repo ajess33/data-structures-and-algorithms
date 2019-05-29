@@ -48,24 +48,69 @@ class LinkedList {
   }
 
   // add node immediately BEFORE the selected node index
-  insertBefore(value, location) {
+  insertBefore(searchValue, valueToAdd) {
+    let current;
+    const newNode = new Node(valueToAdd);
+
     // loop through
-    // if next.val = passed val
-    // new node -> next = current.next
-    // current.next = new Node
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    } else {
+      current = this.head;
+      while (current.value !== searchValue) {
+        current = current.next;
+      }
+      console.log('outside of while loop now');
+      let previous = current;
+      current = newNode;
+      current.next = previous;
+    }
   }
 
   // add node immediately AFTER the selected node index
-  insertAfter(value, location) {
+  insertAfter(searchValue, valueToAdd) {
     // loop through
     // if current.val = passed val
     // new Node -> next equals current.next
     // current.next -> new Node
+    let current;
+    const newNode = new Node(valueToAdd);
+
+    // loop through
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    } else {
+      current = this.head;
+      while (current.value !== searchValue) {
+        current = current.next;
+      }
+      console.log('outside of while loop now');
+      let previous = current;
+      current = newNode;
+
+      current.next = previous;
+    }
   }
 
   delete(value) {
-    // if next.val = passed val
-    // next = next.next
+    if (!this.head) {
+      return `You have nothing in your linked list`;
+    } else {
+      let previous = this.head;
+      let current = previous.next;
+      while (current) {
+        if (current.value === value) {
+          previous.next = current.next;
+          current = current.next;
+          break;
+        } else {
+          previous = current;
+          current = current.next;
+        }
+      }
+    }
   }
 
   includes(searchQuery) {
@@ -118,6 +163,7 @@ TESTS
 
 const listTest = new LinkedList();
 listTest.insert('first value');
+listTest.insert('second value');
 
 describe('The linked list', () => {
   const list = new LinkedList();
@@ -133,7 +179,25 @@ describe('The linked list', () => {
   // FINISH THIS
   it('should insert a node at the end of the linked list', () => {
     listTest.append('last value in list');
-    console.log(listTest);
     expect();
+  });
+
+  it('should insert a node before a specified index', () => {
+    listTest.insertBefore('first value', 'Should be the 2nd value in list');
+    expect(listTest.includes('first value')).toBeTruthy();
+  });
+
+  it('should insert a node after a specified index', () => {
+    const myLinkedList = new LinkedList();
+    myLinkedList.insert('first insert');
+    myLinkedList.insert('second insert');
+    myLinkedList.insertAfter('first insert', 'Inserted after!');
+    expect(myLinkedList.includes('first insert')).toBeTruthy();
+  });
+
+  it('should delete a node with a specific value from the linked list', () => {
+    listTest.delete('first value');
+    console.log(listTest);
+    expect(listTest.includes('first value')).toBeFalsy();
   });
 });
