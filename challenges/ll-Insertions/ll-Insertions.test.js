@@ -54,6 +54,7 @@ class LinkedList {
   // add node immediately BEFORE the selected node index
   insertBefore(searchValue, valueToAdd) {
     let current;
+    let previous;
     const newNode = new Node(valueToAdd);
 
     // loop through
@@ -64,25 +65,18 @@ class LinkedList {
       return;
     } else {
       current = this.head;
-      let count = 0;
-      while (current && count < 10) {
-        if (current.value === searchValue) {
-          let previous = current;
-          current = newNode;
-          current.next = previous;
-          this.length++;
-        }
-        count++;
+      while (current.value !== searchValue) {
+        current = current.next;
       }
+      previous = current;
+      current = newNode;
+      current.next = previous.next;
+      this.length++;
     }
   }
 
   // add node immediately AFTER the selected node index
   insertAfter(searchValue, valueToAdd) {
-    // loop through
-    // if current.val = passed val
-    // new Node -> next equals current.next
-    // current.next -> new Node
     let current;
     const newNode = new Node(valueToAdd);
 
@@ -190,20 +184,20 @@ describe('The linked list', () => {
     expect();
   });
 
-  // it('should insert a node before a specified index', () => {
-  //   listTest.insert('third value');
-  //   listTest.insert('fourth value');
-  //   listTest.insertBefore('first value', 'Should be the 2nd value in list');
-  //   console.log();
-  // });
+  it('should insert a node before a specified index', () => {
+    const newList = new LinkedList();
+    newList.insert('first value');
+    newList.insert('second value');
+    newList.insertBefore('first value', 'Should be the 2nd value in list');
+    console.log(newList);
+    expect(newList.length).toBe(3);
+  });
 
   it('should insert a node after a specified index', () => {
     const myLinkedList = new LinkedList();
     myLinkedList.insert('first insert');
     myLinkedList.insert('second insert');
     myLinkedList.insertAfter('first insert', 'Inserted after!');
-    console.log(myLinkedList);
-    console.log(myLinkedList.print());
     expect(myLinkedList.length).toBe(3);
   });
 
