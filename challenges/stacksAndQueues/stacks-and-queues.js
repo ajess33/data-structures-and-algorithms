@@ -60,4 +60,27 @@ class Stack {
   }
 }
 
+class Queue {
+  constructor() {
+    this.front = null;
+    this.rear = null;
+  }
+
+  enqueue(value) {
+    if (!value) {
+      return `You must pass in a value to add`;
+    }
+
+    const newNode = new Node(value);
+    if (!this.front) {
+      this.front = newNode;
+    } else {
+    }
+  }
+
+  dequeue() {}
+
+  peek() {}
+}
+
 module.exports = Stack;
