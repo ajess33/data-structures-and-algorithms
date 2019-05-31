@@ -40,9 +40,24 @@ class Stack {
     });
   }
 
-  pop() {}
+  pop() {
+    if (!this.top) {
+      return `You dont have anything in your stack!`;
+    }
 
-  peek() {}
+    let removedNode = this.top;
+    this.top = this.top.next;
+    removedNode.next = null;
+    return removedNode;
+  }
+
+  peek() {
+    if (!this.top) {
+      return `You dont have anything in your stack!`;
+    }
+
+    return this.top.value;
+  }
 }
 
 module.exports = Stack;

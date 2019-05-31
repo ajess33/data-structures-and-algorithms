@@ -20,4 +20,27 @@ describe('The stack class', () => {
     stack.pushMultiple(['first', 'second', 'third']);
     expect(stack.top.value).toBe('third');
   });
+
+  it('can successfully pop off the stack', () => {
+    const stack = new Stack();
+    stack.push('pushed Node');
+    stack.push('next Node');
+    stack.pop();
+    expect(stack.top.value).toBe('pushed Node');
+  });
+
+  it('can successfully empty a stack after multiple pops.', () => {
+    const stack = new Stack();
+    stack.pushMultiple(['one', 'two', 'three']);
+    stack.pop();
+    stack.pop();
+    stack.pop();
+    expect(stack.top).toBeNull();
+  });
+
+  it('can successfully peek the next item on the stack', () => {
+    const stack = new Stack();
+    stack.pushMultiple(['One', 'Two', 'Three']);
+    expect(stack.peek()).toBe('Three');
+  });
 });
