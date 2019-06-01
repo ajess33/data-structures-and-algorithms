@@ -62,8 +62,8 @@ class Stack {
 
 class Queue {
   constructor() {
-    this.front = null;
-    this.rear = null;
+    this.head = null;
+    this.tail = null;
   }
 
   enqueue(value) {
@@ -72,15 +72,49 @@ class Queue {
     }
 
     const newNode = new Node(value);
-    if (!this.front) {
-      this.front = newNode;
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
     } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
   }
 
-  dequeue() {}
+  enqueueMultiple(arr) {
+    if (!arr) {
+      return `You must pass in a value to add`;
+    }
 
-  peek() {}
+    arr.forEach((value) => {
+      const newNode = new Node(value);
+      if (!this.head) {
+        this.head = newNode;
+        this.tail = newNode;
+      } else {
+        this.tail.next = newNode;
+        this.tail = newNode;
+      }
+    });
+  }
+
+  dequeue() {
+    if (!this.head) return `Nothing in queue`;
+
+    let temp = this.head;
+    if (this.head === this.tail) {
+      this.tail = null;
+    }
+    this.head = this.head.next;
+    return temp.value;
+  }
+
+  peek() {
+    if (!this.head) {
+      return `Nothing in queue`;
+    }
+    return this.head.value;
+  }
 }
 
-module.exports = Stack;
+module.exports = { Stack, Queue };
