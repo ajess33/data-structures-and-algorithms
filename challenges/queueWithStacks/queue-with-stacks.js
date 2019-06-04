@@ -67,10 +67,13 @@ class PseudoQueue {
   }
 
   enqueue(value) {
+    if (!value) return `You must input a value`;
     const newNode = new Node(value);
-    let temp = this.s1.top;
-    this.s1.top = newNode;
-    this.s1.top.next = temp;
+    this.s1.push(newNode);
+
+    // let temp = this.s1.top;
+    // this.s1.top = newNode;
+    // this.s1.top.next = temp;
   }
 
   dequeue() {
@@ -93,7 +96,8 @@ class PseudoQueue {
       this.s1.push(poppedNode);
       current = current.next;
     }
-    return offTheStack;
+    console.log('STACK: ', offTheStack.value);
+    return offTheStack.value;
   }
 }
 

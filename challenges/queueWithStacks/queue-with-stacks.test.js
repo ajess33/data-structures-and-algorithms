@@ -7,15 +7,17 @@ describe('The PseudoQueue Module', () => {
     expect(queue.s2.top).toBeNull();
   });
 
+  it('enqueue should add new nodes to the end of the queue', () => {
+    const queue = new PseudoQueue();
+    queue.enqueue('first');
+    queue.enqueue('second');
+    queue.enqueue('third');
+    expect(queue.s1.peek().value).toBe('third');
+  });
+
   it('can successfully dequeue from a queue', () => {
     const queue = new PseudoQueue();
     queue.enqueue('first');
     expect(queue.dequeue()).toBe('first');
-  });
-
-  it('can successfully enqueue from a queue', () => {
-    const queue = new PseudoQueue();
-    queue.enqueue('added item!');
-    expect(queue.s1.top.value).toBe('added item!');
   });
 });
