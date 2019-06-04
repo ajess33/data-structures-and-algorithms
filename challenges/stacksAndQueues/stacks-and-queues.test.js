@@ -3,7 +3,7 @@
 const lib = require('./stacks-and-queues');
 // const { Queue } = require('../stacksAndQueues');
 
-describe('The Queue Class', () => {
+xdescribe('The Queue Class', () => {
   it('should be instantianted an empty queue', () => {
     const queue = new lib.Queue();
     expect(queue).toBeDefined();

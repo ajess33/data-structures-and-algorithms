@@ -1,6 +1,6 @@
 const PseudoQueue = require('./queue-with-stacks');
 
-describe('The PseudoQueue Module', () => {
+xdescribe('The PseudoQueue Module', () => {
   it('shold be instantiated with two empty stack objects', () => {
     const queue = new PseudoQueue();
     expect(queue.s1.top).toBeNull();
