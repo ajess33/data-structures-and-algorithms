@@ -53,7 +53,7 @@ xdescribe('The Queue Class', () => {
   });
 });
 
-describe('The Stack Class', () => {
+xdescribe('The Stack Class', () => {
   it('should be instantiated with a top of null', () => {
     const stack = new lib.Stack();
     expect(stack).toBeDefined();
