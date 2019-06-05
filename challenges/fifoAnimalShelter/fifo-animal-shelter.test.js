@@ -1,6 +1,6 @@
 const AnimalShelter = require('./fifo-animal-shelter');
 
-describe('The AnimalShelter Module', () => {
+xdescribe('The AnimalShelter Module', () => {
   it('should be instantianted an empty queue', () => {
     const shelter = new AnimalShelter();
     expect(shelter).toBeDefined();
