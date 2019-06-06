@@ -1,11 +1,10 @@
 const Stack = require('../stacksAndQueues/stacks-and-queues').Stack;
 
-const opening = ['(', '[', '{'];
-const closing = [')', ']', '}'];
-
 const multiBracketValidation = (input) => {
   if (!input) return `You must pass in a string`;
 
+  const opening = ['(', '[', '{'];
+  const closing = [')', ']', '}'];
   const stack = new Stack();
   const inputArr = input.split('');
   let bracketArr = [];
