@@ -5,6 +5,13 @@ const multiBracketValidation = (input) => {
 
   const opening = ['(', '[', '{'];
   const closing = [')', ']', '}'];
+
+  const brackets = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+
   const stack = new Stack();
   const inputArr = input.split('');
   let bracketArr = [];
@@ -17,8 +24,9 @@ const multiBracketValidation = (input) => {
   });
 
   for (let i = 0; i < bracketArr.length; i++) {
-    if (opening.includes(bracketArr[i])) {
+    if (Object.keys(brackets).includes(bracketArr[i])) {
       stack.push(bracketArr[i]);
+    } else {
     }
   }
 };
