@@ -27,7 +27,19 @@ class BinaryTree {
     }
   }
 
-  inOrder() {}
+  inOrder() {
+    let result = [];
+    inOrderVisit(this.root);
+    return result;
+
+    function inOrderVisit(node) {
+      if (!node) {
+        return;
+      }
+    }
+    // if node.leftChild is not null
+    // inOrder()
+  }
 
   postOrder() {}
 }
