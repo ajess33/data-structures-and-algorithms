@@ -88,7 +88,6 @@ class LinkedList {
     } else {
       current = this.head;
       while (current) {
-        console.log(current);
         if (current.value === searchValue) {
           let previous = current;
           current = newNode;
@@ -187,13 +186,12 @@ const list = new LinkedList();
 list.insert('first');
 list.insert('second');
 list.insert('third');
-describe('The Linked List', () => {
+xdescribe('The Linked List', () => {
   it('should have a length property', () => {
     expect(list.length).toBe(3);
   });
 
   it('should return the value of the kth index from the end of the list', () => {
-    console.log(list);
     expect(list.findFromEnd(2)).toBe('third');
   });
 
