@@ -1,7 +1,7 @@
 const BinaryTree = require('./tree');
 // const BinarySearchTree = require('./binarySearchTree');
 
-xdescribe('The Binary Tree', () => {
+describe('The Binary Tree', () => {
   it('can traverse preorder', () => {
     let tree = testTree();
 
@@ -12,13 +12,14 @@ xdescribe('The Binary Tree', () => {
     let tree = testTree();
 
     expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
+    // expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
   });
 
-  // it('can traverse postorder', () => {
-  //   let tree = testTree();
-
-  //   expect(tree.postOrder()).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
-  // });
+  it('can traverse postorder', () => {
+    let tree = testTree();
+    expect(tree.postOrder()).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
+    // expect(tree.postOrder()).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
+  });
 });
 
 function testTree() {

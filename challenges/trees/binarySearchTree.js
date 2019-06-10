@@ -20,7 +20,11 @@ class BinarySearchTree extends BinaryTree {
   }
 
   // accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once
-  contains(value) {}
+  contains(node, value) {
+    if (!value) return `You must input a value`;
+    if (!this.root) return false;
+    while (value !== node.value) {}
+  }
 }
 
 module.exports = BinarySearchTree;

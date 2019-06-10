@@ -62,6 +62,10 @@ class Stack {
 
     return this.top.value;
   }
+
+  isEmpty() {
+    return this.top ? false : true;
+  }
 }
 
 class Queue {

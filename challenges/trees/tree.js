@@ -1,6 +1,6 @@
 class Node {
   constructor(value) {
-    (this.value = value), (this.leftChild = this.rightChild = null);
+    (this.value = value), (this.left = this.right = null);
   }
 }
 
@@ -11,50 +11,51 @@ class BinaryTree {
 
   preOrder() {
     let result = [];
-    preOrderVisit(this.root);
+    travserse(this.root);
     return result;
 
     // Recursive Helper
-    function preOrderVisit(node) {
+    function travserse(node) {
       if (!node) {
         return;
       }
 
       result.push(node.value);
 
-      preOrderVisit(node.left);
-      preOrderVisit(node.right);
+      travserse(node.left);
+      travserse(node.right);
     }
   }
 
   inOrder() {
     let result = [];
-    inOrderVisit(this.root);
+    traverse(this.root);
     return result;
 
-    function inOrderVisit(node) {
+    // Recursive Helper
+    function traverse(node) {
       if (!node) {
         return;
       }
-      console.log(node.value);
-      inOrderVisit(node.leftChild);
+
+      traverse(node.left);
       result.push(node.value);
-      inOrderVisit(node.leftChild);
+      traverse(node.right);
     }
   }
 
   postOrder() {
     let result = [];
-    postOrderVisit(this.root);
+    traverse(this.root);
     return result;
 
-    function postOrderVisit(node) {
+    function traverse(node) {
       if (!node) {
         return;
       }
 
-      postOrderVisit(node.leftChild);
-      postOrderVisit(node.rightchild);
+      traverse(node.left);
+      traverse(node.right);
       result.push(node.value);
     }
   }
