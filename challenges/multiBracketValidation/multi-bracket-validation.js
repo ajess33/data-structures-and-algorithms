@@ -16,18 +16,13 @@ const multiBracketValidation = (input) => {
     char = arr[i];
     if (closingBrackets.indexOf(char) > -1) {
       matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(char)];
-      // console.log(stack.pop(), matchingOpeningBracket);
-      console.log(stack.top);
       if (!stack.top || stack.pop() !== matchingOpeningBracket) {
-        console.log(stack.pop(), matchingOpeningBracket);
-        console.log('TOP!!!!!!!!!!!!!!!', stack.top);
         return false;
       }
     } else {
       stack.push(char);
     }
   }
-  console.log(stack);
   return stack.length === 0;
 };
 

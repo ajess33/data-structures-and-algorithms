@@ -12,13 +12,13 @@ xdescribe('The Binary Tree', () => {
     let tree = testTree();
 
     expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
+    // expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
   });
 
-  // it('can traverse postorder', () => {
-  //   let tree = testTree();
-
-  //   expect(tree.postOrder()).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
-  // });
+  it('can traverse postorder', () => {
+    let tree = testTree();
+    expect(tree.postOrder()).toEqual(['D', 'E', 'B', 'F', 'C', 'A']);
+  });
 });
 
 function testTree() {
