@@ -8,6 +8,7 @@ class Node {
 class Stack {
   constructor() {
     this.top = null;
+    this.length = 0;
   }
 
   push(value) {
@@ -22,6 +23,7 @@ class Stack {
       newNode.next = this.top;
       this.top = newNode;
     }
+    this.length++;
   }
 
   pushMultiple(arr) {
@@ -37,6 +39,7 @@ class Stack {
         newNode.next = this.top;
         this.top = newNode;
       }
+      this.length++;
     });
   }
 
@@ -48,7 +51,8 @@ class Stack {
     let removedNode = this.top;
     this.top = this.top.next;
     removedNode.next = null;
-    return removedNode;
+    this.length--;
+    return removedNode.value;
   }
 
   peek() {

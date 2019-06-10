@@ -1,18 +1,18 @@
 const BinaryTree = require('./tree');
 // const BinarySearchTree = require('./binarySearchTree');
 
-describe('The Binary Tree', () => {
+xdescribe('The Binary Tree', () => {
   it('can traverse preorder', () => {
     let tree = testTree();
 
     expect(tree.preOrder()).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
   });
 
-  // it('can traverse inorder', () => {
-  //   let tree = testTree();
+  it('can traverse inorder', () => {
+    let tree = testTree();
 
-  //   expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
-  // });
+    expect(tree.inOrder()).toEqual(['D', 'B', 'E', 'A', 'F', 'C']);
+  });
 
   // it('can traverse postorder', () => {
   //   let tree = testTree();

@@ -36,12 +36,28 @@ class BinaryTree {
       if (!node) {
         return;
       }
+      console.log(node.value);
+      inOrderVisit(node.leftChild);
+      result.push(node.value);
+      inOrderVisit(node.leftChild);
     }
-    // if node.leftChild is not null
-    // inOrder()
   }
 
-  postOrder() {}
+  postOrder() {
+    let result = [];
+    postOrderVisit(this.root);
+    return result;
+
+    function postOrderVisit(node) {
+      if (!node) {
+        return;
+      }
+
+      postOrderVisit(node.leftChild);
+      postOrderVisit(node.rightchild);
+      result.push(node.value);
+    }
+  }
 }
 
 module.exports = BinaryTree;

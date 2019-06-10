@@ -1,34 +1,34 @@
 const Stack = require('../stacksAndQueues/stacks-and-queues').Stack;
 
 const multiBracketValidation = (input) => {
-  if (!input) return `You must pass in a string`;
+  if (!input) return true;
+  if (input.length <= 1) return false;
 
-  const opening = ['(', '[', '{'];
-  const closing = [')', ']', '}'];
+  const arr = input.match(/[\[\]\{\}\(\)]/g);
 
-  const brackets = {
-    '(': ')',
-    '[': ']',
-    '{': '}'
-  };
+  const openingBrackets = ['(', '[', '{'];
+  const closingBrackets = [')', ']', '}'];
 
-  const stack = new Stack();
-  const inputArr = input.split('');
-  let bracketArr = [];
-  inputArr.forEach((char) => {
-    if (char === '(' || char === '[' || char === '{') {
-      bracketArr.push(char);
+  let matchingOpeningBracket, char;
+  let stack = new Stack();
+
+  for (let i = 0; i < arr.length; i++) {
+    char = arr[i];
+    if (closingBrackets.indexOf(char) > -1) {
+      matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(char)];
+      // console.log(stack.pop(), matchingOpeningBracket);
+      console.log(stack.top);
+      if (!stack.top || stack.pop() !== matchingOpeningBracket) {
+        console.log(stack.pop(), matchingOpeningBracket);
+        console.log('TOP!!!!!!!!!!!!!!!', stack.top);
+        return false;
+      }
     } else {
-      return;
-    }
-  });
-
-  for (let i = 0; i < bracketArr.length; i++) {
-    if (Object.keys(brackets).includes(bracketArr[i])) {
-      stack.push(bracketArr[i]);
-    } else {
+      stack.push(char);
     }
   }
+  console.log(stack);
+  return stack.length === 0;
 };
 
 module.exports = multiBracketValidation;
