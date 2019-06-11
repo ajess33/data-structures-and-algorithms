@@ -1,29 +1,37 @@
-const BinaryTree = require('./binary-tree');
+const BinaryTree = require('./tree');
 
 class BinarySearchTree extends BinaryTree {
   add(value) {
-    if (this.root === null) {
-      this.root = new BinaryTree.Node(value);
-      return;
-    }
-
-    function addNode(node, value) {
-      // Assume node is not null
-      if (value < node.value) {
-        if (node.left === null) {
-          node.left = new BinaryTree.Node(value);
-        } else {
-          addNode(node.left, value);
-        }
+    if (!value) return null;
+    let newNode = new BinaryTree.Node(value);
+    function addHelper(tree) {
+      if (tree.value > value && tree.left === null) {
+        tree.left = newNode;
+      } else if (tree.value > value) {
+        addHelper(tree.left);
+      } else if (tree.value < value && tree.right === null) {
+        tree.right = newNode;
+      } else if (tree.value < value) {
+        addHelper(tree.right);
       }
     }
+    addHelper(this);
   }
-
   // accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once
-  contains(node, value) {
-    if (!value) return `You must input a value`;
-    if (!this.root) return false;
-    while (value !== node.value) {}
+  contains(value) {
+    if (!value || !this.root) return false;
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    return found;
   }
 }
 

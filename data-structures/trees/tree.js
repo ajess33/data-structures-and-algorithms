@@ -1,3 +1,5 @@
+const lib = require('../../challenges/stacksAndQueues/stacks-and-queues');
+
 class Node {
   constructor(value) {
     (this.value = value), (this.left = this.right = null);
@@ -7,6 +9,24 @@ class Node {
 class BinaryTree {
   constructor() {
     this.root = null;
+  }
+
+  breadth() {
+    const queue = new lib.Queue();
+    let result = [];
+    if (this.root) queue.enqueue(this.root);
+
+    while (queue.head) {
+      let current = queue.dequeue();
+      if (current.left) {
+        queue.enqueue(current.left);
+      }
+      if (current.right) {
+        queue.enqueue(current.right);
+      }
+      result.push(current.value);
+    }
+    return result;
   }
 
   preOrder() {
