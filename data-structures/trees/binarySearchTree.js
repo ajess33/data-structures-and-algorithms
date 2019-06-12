@@ -38,7 +38,6 @@ class BinarySearchTree extends BinaryTree {
     }
     return this;
   }
-
   // accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once
   contains(value) {
     let current = this.root;
@@ -53,6 +52,7 @@ class BinarySearchTree extends BinaryTree {
       }
     }
     return false;
+
   }
 }
 
