@@ -11,6 +11,22 @@ class BinaryTree {
     this.root = null;
   }
 
+  findMaximumValue() {
+    if (!this.root) return null;
+    let max = 0;
+    traverse(this.root);
+
+    function traverse(node) {
+      if (!node) return;
+      if (max < node.value) {
+        max = node.value;
+      }
+      traverse(node.left);
+      traverse(node.right);
+    }
+    return max;
+  }
+
   breadth() {
     const queue = new lib.Queue();
     let result = [];
