@@ -2,6 +2,19 @@ const BinaryTree = require('./tree');
 // const BinarySearchTree = require('./binarySearchTree');
 
 describe('The Binary Tree', () => {
+  it('can find the max value in a tree', () => {
+    let tree = new BinaryTree();
+    tree.root = new BinaryTree.Node(10);
+    tree.root.left = new BinaryTree.Node(5);
+    tree.root.right = new BinaryTree.Node(12);
+    expect(tree.findMaximumValue()).toBe(12);
+  });
+
+  it('returns null if tree is empty while searching for max', () => {
+    let tree = new BinaryTree();
+    expect(tree.findMaximumValue()).toBe(null);
+  });
+
   it('can perform a breadth traverse', () => {
     let tree = testTree();
     expect(tree.breadth()).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
