@@ -1,7 +1,12 @@
 const BinaryTree = require('./tree');
 // const BinarySearchTree = require('./binarySearchTree');
 
-xdescribe('The Binary Tree', () => {
+describe('The Binary Tree', () => {
+  it('can perform a breadth traverse', () => {
+    let tree = testTree();
+    expect(tree.breadth()).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+  });
+
   it('can traverse preorder', () => {
     let tree = testTree();
 

@@ -1,6 +1,7 @@
 class LinkedList {
   constructor() {
     this.head = null;
+    this.length = 0;
   }
 
   insertMany(arr) {
@@ -8,6 +9,7 @@ class LinkedList {
       return `You must input an array consisting of at least one value`;
     }
     arr.forEach((value) => {
+      this.length++;
       const newNode = new Node(value);
       if (!this.head) {
         this.head = newNode;
@@ -29,6 +31,7 @@ class LinkedList {
       newNode.next = this.head;
       this.head = newNode;
     }
+    this.length++;
   }
 
   // add node to END of list
@@ -45,36 +48,35 @@ class LinkedList {
       }
       current.next = newNode;
     }
+    this.length++;
   }
 
   // add node immediately BEFORE the selected node index
   insertBefore(searchValue, valueToAdd) {
     let current;
+    let previous;
     const newNode = new Node(valueToAdd);
 
     // loop through
     if (!this.head) {
       this.head = newNode;
+      this.length++;
+
       return;
     } else {
       current = this.head;
-      while (current) {
-        console.log(current);
-        if (current.value === searchValue) {
-          let previous = current;
-          current = newNode;
-          current.next = previous;
-        }
+      while (current.value !== searchValue) {
+        current = current.next;
       }
+      previous = current;
+      current = newNode;
+      current.next = previous.next;
+      this.length++;
     }
   }
 
   // add node immediately AFTER the selected node index
   insertAfter(searchValue, valueToAdd) {
-    // loop through
-    // if current.val = passed val
-    // new Node -> next equals current.next
-    // current.next -> new Node
     let current;
     const newNode = new Node(valueToAdd);
 
@@ -88,10 +90,9 @@ class LinkedList {
         current = current.next;
       }
       console.log('outside of while loop now');
-      let previous = current;
-      current = newNode;
-
-      current.next = previous;
+      newNode.next = current.next;
+      current.next = newNode;
+      this.length++;
     }
   }
 
@@ -184,10 +185,12 @@ xdescribe('The linked list', () => {
   });
 
   it('should insert a node before a specified index', () => {
-    listTest.insert('third value');
-    listTest.insert('fourth value');
-    listTest.insertBefore('first value', 'Should be the 2nd value in list');
-    console.log();
+    const newList = new LinkedList();
+    newList.insert('first value');
+    newList.insert('second value');
+    newList.insertBefore('first value', 'Should be the 2nd value in list');
+    console.log(newList);
+    expect(newList.length).toBe(3);
   });
 
   it('should insert a node after a specified index', () => {
@@ -195,6 +198,7 @@ xdescribe('The linked list', () => {
     myLinkedList.insert('first insert');
     myLinkedList.insert('second insert');
     myLinkedList.insertAfter('first insert', 'Inserted after!');
+    expect(myLinkedList.length).toBe(3);
   });
 
   it('should delete a node with a specific value from the linked list', () => {
