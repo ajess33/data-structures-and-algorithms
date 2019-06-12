@@ -1,38 +1,60 @@
 const BinaryTree = require('./tree');
 
+class Node {
+  constructor(value) {
+    (this.value = value), (this.left = this.right = null);
+  }
+}
+
 class BinarySearchTree extends BinaryTree {
   add(value) {
     if (!value) return null;
-    let newNode = new BinaryTree.Node(value);
-    function addHelper(tree) {
-      if (tree.value > value && tree.left === null) {
-        tree.left = newNode;
-      } else if (tree.value > value) {
-        addHelper(tree.left);
-      } else if (tree.value < value && tree.right === null) {
-        tree.right = newNode;
-      } else if (tree.value < value) {
-        addHelper(tree.right);
+    let current;
+    let newNode = new Node(value);
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      current = this.root;
+
+      while (current) {
+        if (value < current.value) {
+          if (current.left === null) {
+            current.left = newNode;
+            break;
+          } else {
+            current = current.left;
+          }
+        } else if (value > current.value) {
+          if (current.right === null) {
+            current.right = newNode;
+            break;
+          } else {
+            current = current.right;
+          }
+        } else {
+          break;
+        }
       }
     }
-    addHelper(this);
+    return this;
   }
   // accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once
   contains(value) {
-    if (!value || !this.root) return false;
     let current = this.root;
-    let found = false;
-    while (current && !found) {
+    while (current) {
+      if (value === current.value) {
+        return true;
+      }
       if (value < current.value) {
         current = current.left;
-      } else if (value > current.value) {
-        current = current.right;
       } else {
-        found = true;
+        current = current.right;
       }
     }
-    return found;
+    return false;
+
   }
 }
 
 module.exports = BinarySearchTree;
+BinarySearchTree.Node = Node;
