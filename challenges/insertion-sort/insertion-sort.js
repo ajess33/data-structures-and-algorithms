@@ -1,6 +1,7 @@
 'use strict';
 
 const insertionSort = (arr) => {
+  if (arr.length === 0) return [];
   for (let i = 1; i < arr.length; i++) {
     let j = i - 1;
     let temp = arr[i];

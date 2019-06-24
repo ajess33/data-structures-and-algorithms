@@ -5,4 +5,8 @@ describe('The insertionSort Function', () => {
     let arr = [10, 4, 3, 8, 1, 29];
     expect(insertionSort(arr)).toEqual([1, 3, 4, 8, 10, 29]);
   });
+
+  it('should return an empty if the array passed in is empty', () => {
+    expect(insertionSort([])).toEqual([]);
+  });
 });
