@@ -1,5 +1,7 @@
 # Lecture Notes - Insertion Sort
 
+![Insertion Sort Visualized](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/insertionsort.png)
+
 Insertion sort is a type of sorting algorithm. It is not as performant as most of the other sorting methods like, quick sort and merge sort for example.
 
 ### Pseudocode
