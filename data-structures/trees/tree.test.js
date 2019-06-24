@@ -1,7 +1,7 @@
 const BinaryTree = require('./tree');
 // const BinarySearchTree = require('./binarySearchTree');
 
-describe('The Binary Tree', () => {
+xdescribe('The Binary Tree', () => {
   it('can find the max value in a tree', () => {
     let tree = new BinaryTree();
     tree.root = new BinaryTree.Node(10);
