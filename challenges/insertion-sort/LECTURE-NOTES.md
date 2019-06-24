@@ -4,8 +4,24 @@
 
 Insertion sort is a type of sorting algorithm. It is not as performant as most of the other sorting methods like, quick sort and merge sort for example.
 
+### Learning Objectives
+
+- Be able to implement an insertion sort on an array
+- Be able to explain the performance compared to other sorting algorithms
+
+### Lecture Flow
+
+- Divides the array into 2 parts
+
+  - sorted and unsorted
+
+- Performance
+  - Not as fast as a quick sort or a merge sort unless the array is almost sorted or it is very small
+  - Average Case: O (n^2)
+
 ### Pseudocode
 
+```
 for (let i = 0; i < arr.length; i++) {
 j = i - 1
 temp = arr[i]
@@ -16,6 +32,7 @@ j = j + 1
 arr[j + 1] = temp
 }
 return arr
+```
 
 ### Readings and References
 
