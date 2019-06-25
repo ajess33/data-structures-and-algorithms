@@ -30,12 +30,17 @@ function merge(b, c, a) {
   }
   console.log('merged', a, i, j);
   // use a[k] too add to array
-  if (i === b.length) {
+  while (i < b.length) {
     // a.push(...c.slice(j));
-    a[k] = c[j];
-  } else {
-    // a.push(...b.slice(i));
     a[k] = b[i];
+    i++;
+    k++;
+  }
+  while (j < c.length) {
+    // a.push(...b.slice(i));
+    a[k] = c[j];
+    j++;
+    k++;
   }
   return a;
 }
