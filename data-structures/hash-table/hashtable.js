@@ -50,8 +50,10 @@ class HashTable {
 
   hash(key) {
     if (!key) return `Please provide a key`;
+    if (typeof key !== 'string') {
+      key = JSON.stringify(key);
+    }
     let hash = key
-      .toString()
       .split('')
       .map((char) => char.charCodeAt(0))
       .reduce((acc, cur) => acc + cur);
