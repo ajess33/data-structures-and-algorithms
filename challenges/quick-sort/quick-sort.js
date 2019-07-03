@@ -24,9 +24,6 @@ function partition(arr, left, right) {
 
 function swap(arr, i, low) {
   [arr[i], arr[low]] = [arr[low], arr[i]];
-  // let temp = arr[i];
-  // arr[i] = arr[low];
-  // arr[low] = temp;
 }
 
 module.exports = quickSort;
