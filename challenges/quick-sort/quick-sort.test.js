@@ -1,6 +1,6 @@
 const quickSort = require('./quick-sort');
 
-describe('The Quick Sort Function', () => {
+xdescribe('The Quick Sort Function', () => {
   it('should sort an array', () => {
     let arr = [14, 7, 3, 1, 17, 20, 11, 12];
     expect(quickSort(arr, 0, arr.length - 1)).toEqual([

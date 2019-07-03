@@ -69,6 +69,8 @@ class Node {
   }
 }
 
+module.exports = LinkedList;
+
 // TESTS
 // Can successfully instantiate an empty linked list
 // Can properly insert into the linked list
