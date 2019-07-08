@@ -20,11 +20,10 @@ class HashTable {
 
   get(key) {
     // takes in the key and returns the value from the table.
-    console.log(key);
     if (!key) return `Please provide a key`;
     let current;
     let index = this.hash(key);
-    if (this.storage[index].head) {
+    if (this.storage[index]) {
       current = this.storage[index].head;
     } else {
       current = null;
