@@ -1,6 +1,6 @@
 const HashTable = require('./hashtable');
 
-describe('The HashTable Class', () => {
+xdescribe('The HashTable Class', () => {
   it('can produce a hash code', () => {
     let testTable = new HashTable(1024);
 
