@@ -23,7 +23,6 @@ const repeatedWord = (str) => {
     frequent = frequent.sort((a, b) => Object.values(b) - Object.values(a));
   });
   frequent = frequent.slice(0, 3);
-  frequent = new Set(frequent);
   return { firstDup, counts, frequent };
 };
 
