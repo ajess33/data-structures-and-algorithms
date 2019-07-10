@@ -5,9 +5,14 @@ describe('The treeIntersection Method', () => {
   const tree1 = testTree();
   const tree2 = testTree2();
 
+  it('should return an error if a tree is empty', () => {
+    const emptyTree = new BinaryTree();
+    let result = treeIntersection(tree1, emptyTree);
+    expect(result).toBe(`Error. Empty tree`);
+  });
+
   it('should return a hashTable of common values', () => {
     let result = treeIntersection(tree1, tree2);
-    console.log(result);
     expect(result).toBeDefined();
   });
 });
