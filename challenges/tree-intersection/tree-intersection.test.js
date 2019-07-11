@@ -1,7 +1,7 @@
 const treeIntersection = require('./tree-intersection');
 const BinaryTree = require('../../data-structures/trees/tree');
 
-describe('The treeIntersection Method', () => {
+xdescribe('The treeIntersection Method', () => {
   const tree1 = testTree();
   const tree2 = testTree2();
 
