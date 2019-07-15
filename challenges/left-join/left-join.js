@@ -18,7 +18,6 @@ const leftJoin = (hash1, hash2) => {
       }
     }
   }
-  console.log(result.map((row) => (row.length < 3 ? row.concat(null) : row)));
   return result.map((row) => (row.length < 3 ? row.concat([null]) : row));
 };
 module.exports = leftJoin;
