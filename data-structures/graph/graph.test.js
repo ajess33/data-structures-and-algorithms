@@ -2,25 +2,36 @@ const Graph = require('./graph');
 
 describe('The Graph Function', () => {
   let _test = new Graph();
-  _test.addNode('first');
-  _test.addNode('second');
+  let firstNode = _test.addNode('first');
+  let secondNode = _test.addNode('second');
 
   it('should add a new node to graph', () => {
     let testGraph = new Graph();
-    testGraph.addNode('hello');
-    expect(testGraph.nodes).toHaveLength(1);
+
+    let result = testGraph.addNode('hello');
+    expect(result.value).toBe('hello');
   });
 
-  // it('should add edges to a given node', () => {
-  //   _test.addEdge('first', 'second', (weight = 1));
-  //   console.log(_test.edges);
-  // });
+  it('should add edges to a given node', () => {
+    _test.addEdge('first', 'second');
+    expect(firstNode.edges).toHaveLength(1);
+    expect(secondNode.edges).toHaveLength(1);
+    expect(firstNode.edges[0].node.value).toBe('second');
+  });
 
   it('should return a list of all nodes', () => {
-    expect(_test.getNodes()).toEqual(['first', 'second']);
+    let allNodes = _test.getNodes();
+    expect(allNodes).toEqual(['first', 'second']);
+  });
+
+  it('should return all nodes that are neighboring a specific node', () => {
+    let neighbors = _test.getNeighbors('first');
+    console.log(neighbors);
+    expect(neighbors).toBeDefined();
   });
 
   it('should return size of the graph', () => {
-    expect(_test.size()).toBe(2);
+    let result = _test.size();
+    expect(result).toBe(2);
   });
 });
