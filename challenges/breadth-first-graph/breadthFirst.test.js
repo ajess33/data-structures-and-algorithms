@@ -1,6 +1,6 @@
 const Graph = require('./breadthFirst');
 
-describe('Breadth First Traversal', () => {
+xdescribe('Breadth First Traversal', () => {
   let testGraph = new Graph();
   testGraph.addNode('first');
   testGraph.addNode('second');
