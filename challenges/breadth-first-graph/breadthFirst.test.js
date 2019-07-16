@@ -7,11 +7,16 @@ describe('Breadth First Traversal', () => {
   testGraph.addNode('third');
   testGraph.addNode('fourth');
   testGraph.addNode('fifth');
-  console.log(testGraph.adjList);
+  testGraph.addEdge('first', 'second');
+  testGraph.addEdge('second', 'third');
+  testGraph.addEdge('third', 'fourth');
+  testGraph.addEdge('fifth', 'second');
 
   it('should return a list of all nodes in graph', () => {
-    // let list = testGraph.breadthFirst('first');
-    // expect(list).toBeDefined();
+    testGraph.breadthFirst('first');
+    console.log(testGraph.breadthFirst('first'));
+    // console.log('LIST: ', list);
+    expect().toBeDefined();
     expect();
   });
 });

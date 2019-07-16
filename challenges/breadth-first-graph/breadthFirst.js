@@ -45,23 +45,28 @@ class Graph {
   }
 
   breadthFirst(value) {
-    console.log(value);
-    let node = this.adjList.get(value);
-    console.log(node);
-    let result = new Set();
-    let queue = new Queue();
-    queue.enqueue(node);
-    result.add(node);
+    let root = this.adjList.get(value);
+    if (!root) return `Please input a starting node!`;
 
-    while (queue.peek()) {
-      let removed = queue.dequeue();
-      // has is a method on the Map constructor
-      node.edges
-        .filter((node) => !removed.has(node))
-        .forEach((node) => {
-          result.add(node);
-          queue.enqueue(node);
-        });
+    let result = new Set();
+    let breadth = new Queue();
+    breadth.enqueue(root);
+
+    let limit = 0;
+    // run until our queue is empty
+    while (breadth.peek() && limit > 30) {
+      limit++;
+      // dequeue front now and check to see if it has any children
+      let front = breadth.dequeue();
+      console.log('WHY WONT YOU LOG!!!!!', front);
+      result.add(front);
+
+      front.edges.forEach((node) => {
+        if (!result.has(node)) {
+          result.push(node);
+          breadth.enqueue(node);
+        }
+      });
     }
     return result;
   }

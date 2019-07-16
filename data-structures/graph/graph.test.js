@@ -26,7 +26,6 @@ describe('The Graph Function', () => {
 
   it('should return all nodes that are neighboring a specific node', () => {
     let neighbors = _test.getNeighbors('first');
-    console.log(neighbors);
     expect(neighbors).toBeDefined();
   });
 
