@@ -13,10 +13,8 @@ describe('Breadth First Traversal', () => {
   testGraph.addEdge('fifth', 'second');
 
   it('should return a list of all nodes in graph', () => {
-    testGraph.breadthFirst('first');
-    console.log(testGraph.breadthFirst('first'));
-    // console.log('LIST: ', list);
-    expect().toBeDefined();
-    expect();
+    let result = testGraph.breadthFirst('first');
+
+    expect(result).toEqual(['first', 'second', 'third', 'fifth', 'fourth']);
   });
 });

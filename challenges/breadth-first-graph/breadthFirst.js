@@ -25,8 +25,8 @@ class Graph {
     v1 = this.adjList.get(v1);
     v2 = this.adjList.get(v2);
     if (!v1 || !v2) return `Please return two nodes!`;
-    v1.edges.push({ node: v2, weight });
-    v2.edges.push({ node: v1, weight });
+    v1.edges.push({ node: v2.value, weight });
+    v2.edges.push({ node: v1.value, weight });
   }
 
   getNodes() {
@@ -52,23 +52,24 @@ class Graph {
     let breadth = new Queue();
     breadth.enqueue(root);
 
-    let limit = 0;
     // run until our queue is empty
-    while (breadth.peek() && limit > 30) {
-      limit++;
+    while (breadth.head) {
       // dequeue front now and check to see if it has any children
       let front = breadth.dequeue();
-      console.log('WHY WONT YOU LOG!!!!!', front);
-      result.add(front);
 
-      front.edges.forEach((node) => {
-        if (!result.has(node)) {
-          result.push(node);
-          breadth.enqueue(node);
-        }
-      });
+      result.add(front.value);
+      if (front.edges) {
+        front.edges.forEach((node) => {
+          node = this.adjList.get(node.node);
+
+          if (!result.has(node.value)) {
+            result.add(node.value);
+            breadth.enqueue(node);
+          }
+        });
+      }
     }
-    return result;
+    return Array.from(result);
   }
 }
 
