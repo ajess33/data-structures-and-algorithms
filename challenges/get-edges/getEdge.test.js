@@ -1,7 +1,7 @@
 const getEdges = require('./getEdge');
 const Graph = require('../../data-structures/graph/graph');
 
-describe('The getEdge function', () => {
+xdescribe('The getEdge function', () => {
   let testGraph = new Graph();
   popGraph(testGraph);
 
