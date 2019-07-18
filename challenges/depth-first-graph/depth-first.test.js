@@ -3,15 +3,43 @@ const depthFirst = require('./depth-first.js');
 
 describe('The DepthFirst Function', () => {
   let test = new Graph();
-  popGraph(test);
+  populateGraph(test);
 
-  it('should throw an error if graph isnt passed in', () => {
-    let ex = depthFirst(test);
-    expect();
+  it('should return empty array for empty graph', () => {
+    let graph = new Graph();
+    let res = depthFirst(graph);
+    expect(res).toEqual([]);
+  });
+
+  it('should return singleton array for island', () => {
+    let graph = new Graph();
+    graph.addNode('Austin');
+
+    let res = depthFirst(graph);
+
+    expect(res).toEqual(['Austin']);
+  });
+
+  it('should return doubleton array for simple graph', () => {
+    let graph = new Graph();
+    graph.addNode('Austin');
+    graph.addNode('Rory');
+    graph.addEdge('Austin', 'Rory');
+
+    let res = depthFirst(graph);
+
+    expect(res).toEqual(['Austin','Rory']);
+  });
+
+  it('should work for big graph', () => {
+    let res = depthFirst(test);
+    expect(res).toEqual([
+      'A','B','E','F','C'
+    ]);
   });
 });
 
-function popGraph(test) {
+function populateGraph(test) {
   test.addNode('A');
   test.addNode('B');
   test.addNode('C');
