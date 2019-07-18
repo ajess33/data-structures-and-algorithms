@@ -1,6 +1,6 @@
 const Graph = require('./graph');
 
-xdescribe('The Graph Function', () => {
+describe('The Graph Function', () => {
   let _test = new Graph();
   let firstNode = _test.addNode('first');
   let secondNode = _test.addNode('second');

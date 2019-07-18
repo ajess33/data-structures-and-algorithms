@@ -33,13 +33,13 @@ class Graph {
 
   getNeighbors(value) {
     let node = this.adjList.get(value);
+    // TODO: what if node is null?
     let neighbors = node.edges;
     return neighbors;
   }
 
   size() {
-    let arr = this.getNodes();
-    return arr.length;
+    return this.adjList.size;
   }
 }
 
