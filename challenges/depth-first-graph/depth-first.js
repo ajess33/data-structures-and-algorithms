@@ -10,19 +10,19 @@ const depthFirst = (list) => {
   let arr = list.getNodes();
 
   stack.push(arr[0]);
-  visited.add(arr[0]);
 
   while (!stack.isEmpty()) {
     console.log('stack', stack);
+    let current = stack.pop();
+
+    visited.add(current);
     console.log('visited', visited);
 
-    let removed = stack.pop();
-    let neighbors = list.getNeighbors(removed);
-    let neighborValues = neighbors.map((ne) => ne.node.value);
+    let neighbors = list.getNeighbors(current);
+    let neighborValues = neighbors.map((ne) => ne.node.value).reverse();
 
     neighborValues.forEach(neighbor => {
       if (!visited.has(neighbor)) {
-        visited.add(neighbor);
         stack.push(neighbor);
       }
     });
