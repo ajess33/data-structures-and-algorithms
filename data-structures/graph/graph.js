@@ -31,6 +31,10 @@ class Graph {
     return Array.from(this.adjList.keys());
   }
 
+  getNode(value) {
+    return this.adjList.get(value);
+  }
+
   getNeighbors(value) {
     let node = this.adjList.get(value);
     // TODO: what if node is null?

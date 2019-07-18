@@ -37,6 +37,13 @@ describe('The DepthFirst Function', () => {
       'A','B','E','F','C'
     ]);
   });
+
+  it('should work for specific start point on big graph', () => {
+    let res = depthFirst(test, 'D');
+    expect(res).toEqual([
+      'D'
+    ]);
+  });
 });
 
 function populateGraph(test) {

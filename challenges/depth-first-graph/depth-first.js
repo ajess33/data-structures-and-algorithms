@@ -1,15 +1,27 @@
 const { Stack } = require('../stacksAndQueues/stacks-and-queues');
 
-const depthFirst = (list) => {
+const depthFirst = (graph, start) => {
   let stack = new Stack();
   let visited = new Set();
 
-  if (list.size() === 0)
+  if (graph.size() === 0)
     return [];
 
-  let arr = list.getNodes();
+  let firstValue;
+  if (typeof start !== 'undefined') {
+    let startNode = graph.getNode(start);
 
-  stack.push(arr[0]);
+    if (!startNode)
+      throw 'Start not found!'; // TODO: test me
+
+    firstValue = startNode.value;
+  }
+  else {
+    let arr = graph.getNodes();
+    firstValue = arr[0];
+  }
+
+  stack.push(firstValue);
 
   while (!stack.isEmpty()) {
     console.log('stack', stack);
@@ -18,7 +30,7 @@ const depthFirst = (list) => {
     visited.add(current);
     console.log('visited', visited);
 
-    let neighbors = list.getNeighbors(current);
+    let neighbors = graph.getNeighbors(current);
     let neighborValues = neighbors.map((ne) => ne.node.value).reverse();
 
     neighborValues.forEach(neighbor => {
