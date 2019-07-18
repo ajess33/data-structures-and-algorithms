@@ -4,6 +4,10 @@ const depthFirst = (list) => {
   let stack = new Stack();
   let visited = new Set();
 
+  if (list.size() === 0) {
+    throw `No Graph`;
+  }
+
   let arr = list.getNodes();
 
   stack.push(arr[0]);
@@ -15,13 +19,15 @@ const depthFirst = (list) => {
     // console.log('REMOVED', neighbors[0].node.value);
     neighbors = neighbors.map((ne) => ne.node.value);
     console.log(neighbors);
-    if (!visited.has(neighbors)) {
-      visited.add(neighbors);
-      stack.push(neighbors[0]);
-    }
+    neighbors.forEach((neighbor) => {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        stack.push(neighbor);
+      }
+    });
   }
   console.log(visited);
-  return visited;
+  return Array.from(visited);
 };
 
 module.exports = depthFirst;

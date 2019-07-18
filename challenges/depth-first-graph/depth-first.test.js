@@ -6,8 +6,8 @@ describe('The DepthFirst Function', () => {
   popGraph(test);
 
   it('should throw an error if graph isnt passed in', () => {
-    let ex = depthFirst(test);
-    expect();
+    let res = depthFirst(test);
+    expect(res);
   });
 });
 
